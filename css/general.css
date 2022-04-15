@@ -1,0 +1,83 @@
+/* Colors Violet */
+/* ******************** */
+/* General Styles */
+/* ******************** */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif, sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #555;
+}
+.main {
+  position: relative;
+}
+
+.section-products {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  /* margin-top: 4rem; */
+}
+
+/* .container {
+  max-width: 150rem;
+  padding: 0 3.2rem;
+  margin: 9.6rem auto;
+} */
+
+.spinner {
+  margin: 5rem auto;
+  text-align: center;
+}
+
+.spinner svg {
+  height: 6rem;
+  width: 6rem;
+  color: #6741d9;
+  animation: rotate 1s infinite linear;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+.error {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 5rem 4rem;
+  display: flex;
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.error svg {
+  height: 3rem;
+  width: 3rem;
+  stroke: #6741d9;
+  transform: translateY(-0.3rem);
+}
+.grid {
+  display: grid;
+}
+
+/* .flex--4-cols {
+  
+} */

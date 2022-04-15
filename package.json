@@ -1,0 +1,19 @@
+{
+  "name": "productsjson",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel --no-cache index.html",
+    "build": "parcel build index.html"
+  },
+  "author": "luz Edith",
+  "license": "ISC",
+  "dependencies": {
+    "core-js": "^3.21.1",
+    "regenerator-runtime": "^0.13.9"
+  },
+  "devDependencies": {
+    "parcel": "^2.4.0"
+  }
+}

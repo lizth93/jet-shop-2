@@ -1,0 +1,115 @@
+/* ******************** */
+/*SECTION PRODUCTS*/
+/* ******************** */
+/* .product .target-product {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 9rem;
+  justify-content: center;
+  margin-top: 4rem;
+} */
+.preview-link {
+  text-decoration: none;
+  color: #333;
+}
+
+.section_product-ppal {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* gap: 2rem; */
+  /* justify-content: start; */
+  margin-top: 4rem;
+  /* justify-content: start; */
+}
+.section_product-ppal .target-product {
+  display: flex;
+  flex-direction: column;
+  /* flex-direction: row; */
+  flex-wrap: wrap;
+}
+
+.container.section_product-ppal {
+  gap: 9rem;
+  /* justify-content: center; */
+  margin-top: 4rem;
+  max-width: 38rem;
+}
+
+.product__img {
+  width: 100%;
+}
+.check-icon {
+  width: 2rem;
+  height: 2rem;
+  color: #6741d9;
+}
+
+.target-product {
+  box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.089);
+  transition: all 0.3s;
+  margin-bottom: 4rem;
+  /* display: flex;
+  flex-direction: column; */
+}
+
+.target-product:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.product__title {
+  font-weight: 700;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.2;
+  margin: 2rem;
+}
+.descriptions-product {
+  margin-top: 1.2rem;
+  font-size: 1.6rem;
+  padding: 2.4rem;
+}
+
+.product__description-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  list-style: none;
+  line-height: 2rem;
+}
+.product__description {
+  align-content: center;
+}
+.product__fig {
+  text-align: center;
+  /* height: 34rem;
+  overflow: hidden; */
+}
+.product_fig_detail {
+  text-align: center;
+}
+
+.discount {
+  margin-top: 1.8rem;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: #6f6f6f;
+  text-align: center;
+}
+.product-price {
+  font-size: 3.4rem;
+  font-weight: 600;
+  color: #333;
+
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.product-price span {
+  font-size: 3rem;
+  margin-right: 0.8rem;
+}

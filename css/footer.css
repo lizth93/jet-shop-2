@@ -1,0 +1,36 @@
+/* ******************** */
+/* FOOTER */
+/* ******************** */
+
+.heading--2 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+.grid--5-cols {
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2.4rem;
+}
+
+.footer {
+  /* width: 100vh; */
+  /* position: absolute; */
+  width: 100%;
+
+  background-color: #212529;
+  color: #fff;
+  bottom: 0;
+  padding: 1.2rem 4.8rem;
+}
+
+.copyrigth {
+  font-size: 1.4rem;
+  color: #fff;
+  line-height: 1.6;
+  grid-column: span 5;
+  text-align: center;
+}
+
+.footer-logo {
+  height: 10.8rem;
+  width: 10.8rem;
+}

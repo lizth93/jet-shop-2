@@ -1,0 +1,103 @@
+/* ******************** */
+/* HEADER */
+/* ******************** */
+
+.logo {
+  width: 70%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #212529;
+  /*because we weant to be sticky later*/
+  height: 9.6rem;
+  padding: 0 4.8rem;
+}
+
+.search-form {
+  display: grid;
+  grid-template-columns: 10.5fr 1fr;
+}
+.search-form input {
+  width: 100%;
+  padding: 1.2rem;
+  font-size: 1.8rem;
+  font-family: inherit;
+  border: none;
+  background-color: #f3f0ff;
+  border-radius: 7rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+  color: #333;
+}
+
+.search-btn {
+  border: 2px solid #999;
+  padding: 0.8rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transform: translate(-100%, 0%);
+}
+
+.btn-icon {
+  height: 2.6rem;
+  width: 2.6rem;
+}
+
+.btn-icon-1 {
+  height: 2.6rem;
+  width: 2.6rem;
+}
+
+.btn-icon {
+  color: #6741d9;
+}
+.btn-icon-1 {
+  color: #fff;
+}
+
+.btn-icon:hover {
+  color: #222;
+}
+
+/* svg {
+  height: 2.25rem;
+  width: 2.25rem;
+  stroke: white;
+} */
+
+.main-nav-list,
+.main-nav-list-2 {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 4.8rem;
+  color: #fff;
+}
+.main-nav-1 {
+  justify-content: space-between;
+}
+
+.main-nav-list-2 {
+  padding: 1.4rem 0 1.4rem 4.8rem;
+  background-color: #343a40;
+}
+
+.main-nav-link:link,
+.main-nav-link:visited {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.8rem;
+  text-decoration: none;
+  font-weight: 500;
+  color: #dee2e6;
+  transition: all 0.3s;
+}
+
+.main-nav-link:hover,
+.main-nav-link:active {
+  color: #b197fc;
+}
