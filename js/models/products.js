@@ -7,15 +7,32 @@ export default class ProductsModel {
     const url = category === CATEGORIES.All ? API_URL : `${API_URL}/category/${category}`;
     const data = await fetchApi(url);
 
-    return data.products.map((product) => ({
-      id: product.id,
-      title: product.title,
-      image: product.thumbnail,
-      description: product.description,
-      stock: product.stock,
-      discount: product.discountPercentage,
-      brand: product.brand,
-      price: product.price,
+    return data.products.map((x) => ({
+      id: x.id,
+      title: x.title,
+      image: x.thumbnail,
+      description: x.description,
+      stock: x.stock,
+      discount: x.discountPercentage,
+      brand: x.brand,
+      price: x.price,
     }))
+  }
+
+  async getBySearchTerm(searchTerm) {
+    const data = await fetchApi(`${API_URL}/search?q=${searchTerm}`);
+
+    return data.products.map((x) => {
+      return {
+        id: x.id,
+        title: x.title,
+        image: x.thumbnail,
+        description: x.description,
+        stock: x.stock,
+        discount: x.discountPercentage,
+        brand: x.brand,
+        price: x.price,
+      };
+    });
   }
 }

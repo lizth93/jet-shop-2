@@ -8,10 +8,11 @@ export default class ProductsCtrl {
 
   async loadCategories() {
     this.productsView.renderSpinner()
-    const categories = await this.productsModel.loadProducts(
+    const products = await this.productsModel.loadProducts(
       this.getCategory()
     )
-    this.productsView.renderCategories(categories)
+    this.productsView.renderProducts(products)
+    this.loadOnSearch()
   }
 
   getCategory() {
@@ -21,5 +22,13 @@ export default class ProductsCtrl {
   async loadCategory(category) {
     await model.loadProductsCategory(category);
     productsView.render(model.getCategoriesResultsPage(1));
+  }
+
+  loadOnSearch() {
+    this.productsView.onSearch(async (searchTerm) => {
+      this.productsView.renderSpinner()
+      const products = await this.productsModel.getBySearchTerm(searchTerm)
+      this.productsView.renderProducts(products)
+    })
   }
 }

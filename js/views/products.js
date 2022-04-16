@@ -1,6 +1,8 @@
 import View from './view'
 
 export default class ProductsView extends View {
+  searchForm = document.querySelector(".search-form")
+
   renderSpinner() {
     this.render(
       `
@@ -17,8 +19,8 @@ export default class ProductsView extends View {
     )
   }
 
-  renderCategories(categories) {
-    const categoriesMap = categories.map(x => `
+  renderProducts(products) {
+    const productsMap = products.map(x => `
     <div class= "container section_product-ppal">
 
         <div class="target-product">
@@ -135,6 +137,18 @@ export default class ProductsView extends View {
     </div>
     `)
 
-    this.render(categoriesMap.join(''))
+    this.render(productsMap.join(''))
+  }
+
+  onSearch(handler) {
+    this.searchForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const searchTerm = this.searchForm.querySelector(".search-field").value.trim();
+
+      if (searchTerm) {
+        handler(searchTerm);
+        this.searchForm.querySelector(".search-field").value = "";
+      }
+    });
   }
 }
