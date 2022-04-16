@@ -4,7 +4,7 @@ import { fetchApi } from '../helpers'
 
 export default class CategoriesModel {
   async loadCategory(category) {
-    const url = CATEGORIES.All ? API_URL : `${API_URL}/category/${category}`;
+    const url = category === CATEGORIES.All ? API_URL : `${API_URL}/category/${category}`;
     const data = await fetchApi(url);
 
     return data.products.map((product) => ({
