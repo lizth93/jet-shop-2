@@ -2,6 +2,8 @@ import Router from './router'
 import ProductsCtrl from './controllers/products'
 import ProductsView from './views/products'
 import ProductsModel from './models/products'
+import ProductDetailCtrl from './controllers/product-detail'
+import ProductDetailView from './views/product-detail'
 
 export default class AppStartup {
   constructor() {
@@ -9,6 +11,9 @@ export default class AppStartup {
       new ProductsCtrl(
         new ProductsView(),
         new ProductsModel(),
+      ),
+      new ProductDetailCtrl(
+        new ProductDetailView()
       )
     )
   }
@@ -16,6 +21,7 @@ export default class AppStartup {
   start() {
     this.router.start()
   }
+
 }
 
 const mainCtrl = new AppStartup()

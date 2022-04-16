@@ -1,7 +1,5 @@
 export default class View {
-  init() {
-    this.root = document.querySelector(".section-products");
-  }
+  root = document.querySelector(".section-products");
 
   render(html) {
     this.clear();

@@ -7,7 +7,6 @@ export default class ProductsCtrl {
   }
 
   async loadCategories() {
-    this.productsView.init()
     this.productsView.renderSpinner()
     const categories = await this.productsModel.loadProducts(
       this.getCategory()

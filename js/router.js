@@ -1,6 +1,7 @@
 export default class Router {
-  constructor(productsCtrl) {
+  constructor(productsCtrl, productDetailCtrl) {
     this.productsCtrl = productsCtrl
+    this.productDetailCtrl = productDetailCtrl
   }
 
   start() {
@@ -13,10 +14,11 @@ export default class Router {
 
   routing() {
     const path = window.location.hash.replace("#", "")
-    const isProductId = !isNaN(parseInt(path))
+    const productId = parseInt(path)
+    const isProductId = !isNaN(productId)
 
     if (isProductId) {
-      // TODO: here call the ProductCtrl (singular)
+      this.productDetailCtrl.loadProduct(productId)
     } else {
       this.productsCtrl.loadCategories()
     }
