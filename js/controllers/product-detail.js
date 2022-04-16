@@ -1,9 +1,12 @@
 export default class ProductDetailCtrl {
-  constructor(productDetailView) {
+  constructor(productDetailView, productDetailModel) {
     this.productDetailView = productDetailView
+    this.productDetailModel = productDetailModel
   }
 
-  loadProduct(id) {
+  async loadProduct(id) {
     this.productDetailView.renderSpinner()
+    const product = await this.productDetailModel.loadProduct(id)
+    this.productDetailView.renderProduct(product)
   }
 }

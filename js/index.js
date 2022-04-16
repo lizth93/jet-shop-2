@@ -4,6 +4,7 @@ import ProductsView from './views/products'
 import ProductsModel from './models/products'
 import ProductDetailCtrl from './controllers/product-detail'
 import ProductDetailView from './views/product-detail'
+import ProductDetailModel from './models/product-detail'
 
 export default class AppStartup {
   constructor() {
@@ -13,7 +14,8 @@ export default class AppStartup {
         new ProductsModel(),
       ),
       new ProductDetailCtrl(
-        new ProductDetailView()
+        new ProductDetailView(),
+        new ProductDetailModel()
       )
     )
   }
