@@ -13,7 +13,14 @@ export default class MainCtrl {
   start() {
     this.categoriesCtrl.loadCategories()
   }
+
+  loadCategoriesOnHashChange() {
+    window.addEventListener('hashchange', () => {
+      this.categoriesCtrl.loadCategories()
+    })
+  }
 }
 
 const mainCtrl = new MainCtrl()
 mainCtrl.start()
+mainCtrl.loadCategoriesOnHashChange()
