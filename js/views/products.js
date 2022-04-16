@@ -1,6 +1,6 @@
 import View from './view'
 
-export default class CategoriesView extends View {
+export default class ProductsView extends View {
   renderSpinner() {
     this.render(
       `

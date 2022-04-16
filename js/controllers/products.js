@@ -1,18 +1,18 @@
-import { CATEGORIES } from './categories-constants'
+import { CATEGORIES } from './products-constants'
 
-export default class CategoriesCtrl {
-  constructor(categoriesView, categoriesModel) {
-    this.categoriesView = categoriesView;
-    this.categoriesModel = categoriesModel
+export default class ProductsCtrl {
+  constructor(productsView, productsModel) {
+    this.productsView = productsView;
+    this.productsModel = productsModel
   }
 
   async loadCategories() {
-    this.categoriesView.init()
-    this.categoriesView.renderSpinner()
-    const categories = await this.categoriesModel.loadCategory(
+    this.productsView.init()
+    this.productsView.renderSpinner()
+    const categories = await this.productsModel.loadProducts(
       this.getCategory()
     )
-    this.categoriesView.renderCategories(categories)
+    this.productsView.renderCategories(categories)
   }
 
   getCategory() {
