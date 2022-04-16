@@ -23,18 +23,4 @@ export default class ProductsCtrl {
     await model.loadProductsCategory(category);
     productsView.render(model.getCategoriesResultsPage(1));
   }
-
-  // controlPaginationByCategory(goToPage) {
-  //   const categoryId = categoriesView.getCategory();
-  //   if (categoryId != "All") {
-  //     productsView.render(model.getCategoriesResultsPage(goToPage));
-  //     paginationView.renderCategoriesPerPageNoAll(model.state.search);
-  //   }
-
-  //   if (categoryId === "All") {
-  //     productsView.render(model.getCategoriesResultsPage(goToPage));
-  //     paginationView.renderCategoriesPerPageAll(model.state.search);
-  //   }
-  //   categoriesView.addHandlerRenderDetails(controlDetailsForProduct);
-  // };
 }
