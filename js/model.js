@@ -1,6 +1,6 @@
 import { API_URL, RES_PER_PAGE } from "./config";
-import { getJSON } from "./helpers";
-import categoriesView from "./views/categoriesView.js";
+import { fetchApi } from "./helpers";
+import categoriesView from "./views/v1/categoriesView.js";
 
 export const state = {
   search: {
@@ -19,7 +19,7 @@ export const loadSearchResults = async function (query) {
   try {
     state.search.query = query;
 
-    const data = await getJSON(`${API_URL}/search?q=${query}`);
+    const data = await fetchApi(`${API_URL}/search?q=${query}`);
 
     state.search.results = data.products.map((product) => {
       return {
@@ -45,7 +45,7 @@ export const loadProductsCategory = async function (category) {
     let data;
 
     if (category === "All") {
-      data = await getJSON(`${API_URL}`);
+      data = await fetchApi(`${API_URL}`);
 
       state.search.products = data.products.map((product) => {
         return {
@@ -62,7 +62,7 @@ export const loadProductsCategory = async function (category) {
     }
 
     if (category !== "All") {
-      data = await getJSON(`${API_URL}/category/${category}`);
+      data = await fetchApi(`${API_URL}/category/${category}`);
 
       state.search.category = data.products.map((product) => {
         return {
@@ -85,7 +85,7 @@ export const loadProductsCategory = async function (category) {
 
 export const loadDetailProduct = async function (id) {
   try {
-    const data = await getJSON(`${API_URL}/${id}`);
+    const data = await fetchApi(`${API_URL}/${id}`);
     console.log("model:", id);
     state.search.product = {
       id: data.id,

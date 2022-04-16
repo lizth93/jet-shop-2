@@ -8,7 +8,7 @@ import paginationView from "./views/paginationView.js";
 
 const controlSearchResults = async function () {
   try {
-    productsView.renderSpiner();
+    productsView.renderSpinner();
     //1. get the query
     const query = searchView.getQuery();
     if (!query) return;
@@ -31,7 +31,7 @@ const controlSearchResults = async function () {
 
 const controlSearchCategory = async function () {
   try {
-    productsView.renderSpiner();
+    productsView.renderSpinner();
 
     const categoryId = categoriesView.getCategory();
 
@@ -67,7 +67,7 @@ const controlSearchCategory = async function () {
 
 const controlDetailsForProduct = async function (productId) {
   try {
-    productsView.renderSpiner();
+    productsView.renderSpinner();
 
     if (!productId) return;
 

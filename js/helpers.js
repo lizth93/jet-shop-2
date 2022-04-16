@@ -7,7 +7,7 @@ const timeout = function (s) {
     }, s * 1000);
   });
 };
-export const getJSON = async function (url) {
+export const fetchApi = async function (url) {
   try {
     const fetchPro = fetch(url);
     const res = await Promise.race([fetchPro, timeout(TIMEOUT_SEC)]);
