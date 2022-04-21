@@ -11,14 +11,13 @@ export default class PaginationView extends View {
     this.root.removeEventListener("click", this.pagBtnClickListener);
 
     this.pagBtnClickListener = (e) => {
-      console.log("hola click");
       const btn = e.target.closest(".btn-pagination");
 
       if (!btn) return;
-      const goToPage = +btn.dataset.goto;
+      const getNumberPage = +btn.dataset.goto;
 
-      console.log("the number", goToPage);
-      onPageClick(goToPage);
+      console.log("the number", getNumberPage);
+      onPageClick(getNumberPage);
     };
 
     this.root.addEventListener("click", this.pagBtnClickListener);

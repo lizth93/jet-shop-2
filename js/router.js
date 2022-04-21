@@ -20,7 +20,7 @@ export default class Router {
     if (isProductId) {
       this.productDetailCtrl.loadProduct(productId);
     } else {
-      this.productsCtrl.loadCategories();
+      this.productsCtrl.loadProducts();
     }
   }
 }

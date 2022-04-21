@@ -7,20 +7,23 @@ export default class ProductsCtrl {
     this.paginationView = paginationView;
   }
 
-  async loadCategories() {
+  async loadProducts() {
     this.productsView.renderSpinner();
     const products = await this.productsModel.loadProducts(this.getCategory());
     this.productsView.renderProducts(products);
     this.loadOnSearch();
     this.paginationView.init();
     this.loadPagination();
-    this.loadCategoriesOnPageChange();
+    this.loadCategoriesOnPageChange(products);
   }
 
   loadCategoriesOnPageChange() {
     this.paginationView.addHandlerClick((page) => {
       this.productsModel.pagination.page = page;
-      this.loadCategories();
+      this.loadProducts();
+
+      // this.paginationView.init();
+      // this.loadPagination();
     });
   }
 
@@ -35,16 +38,15 @@ export default class ProductsCtrl {
     return window.location.hash.slice(1) || CATEGORIES.All;
   }
 
-  // async loadCategory(category) { ////////////////////////////esto se esta usando?
-  //   await model.loadProductsCategory(category);
-  //   productsView.render(model.getCategoriesResultsPage(1));
-  // }
-
   loadOnSearch() {
     this.productsView.onSearch(async (searchTerm) => {
       this.productsView.renderSpinner();
       const products = await this.productsModel.getBySearchTerm(searchTerm);
       this.productsView.renderProducts(products);
+
+      this.paginationView.init();
+      this.loadPagination();
+      this.loadCategoriesOnPageChange(products);
     });
   }
 }

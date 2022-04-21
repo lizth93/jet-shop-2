@@ -35,13 +35,14 @@ export default class ProductsModel {
     }));
   }
 
-  async getBySearchTerm(searchTerm, page = this.pagination.page) {
-    const paginationQueryParams = this.getPaginationQueryParams(page);
+  async getBySearchTerm(searchTerm) {
+    const paginationQueryParams = this.getPaginationQueryParams();
 
     const data = await fetchApi(
       `${API_URL}/search?q=${searchTerm}&${paginationQueryParams}`
     );
     this.pagination.total = data.total;
+    this.calculatePages();
     console.log(this.pagination.total, "from search total pagination");
     return data.products.map((x) => {
       return {
@@ -58,14 +59,16 @@ export default class ProductsModel {
   }
 
   getPaginationQueryParams() {
-    const skip =
+    let skip =
       this.pagination.page === 1
         ? 0
-        : this.pagination.page * this.pagination.limit;
+        : this.pagination.page * this.pagination.limit - this.pagination.limit;
 
-    // if (total < skip) {
-    //   skip = this.pagination.limit;
-    // }
+    console.log(this.pagination.page);
+
+    if (this.pagination.total < skip) {
+      skip = this.pagination.total;
+    }
     return `limit=${this.pagination.limit}&skip=${skip}`;
   }
 
