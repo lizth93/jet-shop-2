@@ -1,20 +1,31 @@
 import View from "./view";
 
-class PaginationView extends View {
-  _parentEl = document.querySelector(".control-pagination");
+export default class PaginationView extends View {
+  pagBtnClickListener;
 
-  addHandlerClick(handler) {
-    this._parentEl.addEventListener("click", function (e) {
+  init() {
+    this.root = document.querySelector(".control-pagination");
+  }
+
+  addHandlerClick(onPageClick) {
+    this.root.removeEventListener("click", this.pagBtnClickListener);
+
+    this.pagBtnClickListener = (e) => {
+      console.log("hola click");
       const btn = e.target.closest(".btn-pagination");
 
       if (!btn) return;
       const goToPage = +btn.dataset.goto;
 
-      handler(goToPage);
-    });
+      console.log("the number", goToPage);
+      onPageClick(goToPage);
+    };
+
+    this.root.addEventListener("click", this.pagBtnClickListener);
   }
-  markupsButtonsPaginationLeft(curPage) {
-    return `
+
+  renderLeftButton(curPage) {
+    const btnLeft = `
 
     <button data-goto="${curPage - 1}" class="btn-pagination btn--left">
       <svg
@@ -39,10 +50,11 @@ class PaginationView extends View {
     </button>
    
    `;
+    this.render(btnLeft);
   }
 
-  markupsButtonsPaginationRight(curPage) {
-    return `
+  renderRightButton(curPage) {
+    const btnRight = `
     <button data-goto="${curPage + 1}" class="btn-pagination btn--right">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -65,10 +77,11 @@ class PaginationView extends View {
     </button>
 
   `;
+    this.render(btnRight);
   }
 
-  markupsButtonsPaginationLeftRight(curPage) {
-    return `
+  renderLeftRightButtons(curPage) {
+    const btnleftRight = `
 
       <button data-goto="${curPage - 1}" class="btn-pagination btn--left">
         <nav>
@@ -113,78 +126,27 @@ class PaginationView extends View {
       </nav>
      </button>
      `;
+
+    this.render(btnleftRight);
   }
 
-  _generateMarkupCategoryNoAllProducts() {
-    const curPage = this._data.page;
-    const numPages = Math.ceil(
-      this._data.category.length / this._data.resultsPerPage
-    );
-
+  renderPagination(curPage, numPages) {
+    // page 1 with another pages
     if (curPage === 1 && numPages > 1) {
-      return this.markupsButtonsPaginationRight(curPage);
+      this.renderRightButton(curPage);
+      return;
     }
 
     //last page
     if (curPage === numPages && numPages > 1) {
-      return this.markupsButtonsPaginationLeft(curPage);
+      this.renderLeftButton(curPage);
+      return;
     }
 
     //other pages
     if (curPage < numPages) {
-      return this.markupsButtonsPaginationLeftRight(curPage);
+      this.renderLeftRightButtons(curPage);
+      return;
     }
-
-    //page 1 and NO other pages
-    return "";
-  }
-
-  _generateMarkupCategoryAllProducts() {
-    const curPage = this._data.page;
-    const numPages = Math.ceil(
-      this._data.products.length / this._data.resultsPerPage
-    );
-
-    if (curPage === 1 && numPages > 1) {
-      return this.markupsButtonsPaginationRight(curPage);
-    }
-
-    //last page
-    if (curPage === numPages && numPages > 1) {
-      return this.markupsButtonsPaginationLeft(curPage);
-    }
-
-    //other pages
-    if (curPage < numPages) {
-      return this.markupsButtonsPaginationLeftRight(curPage);
-    }
-
-    //page 1 and NO other pages
-    return "";
-  }
-
-  _generateMarkup() {
-    const curPage = this._data.page;
-    const numPages = Math.ceil(
-      this._data.results.length / this._data.resultsPerPage
-    );
-
-    //page 1 with another pages
-    if (curPage === 1 && numPages > 1) {
-      return this.markupsButtonsPaginationRight(curPage);
-    }
-
-    //last page
-    if (curPage === numPages && numPages > 1) {
-      return this.markupsButtonsPaginationLeft(curPage);
-    }
-
-    //other pages
-    if (curPage < numPages) {
-      return this.markupsButtonsPaginationLeftRight(curPage);
-    }
-    //page 1 and NO other pages
-    return "";
   }
 }
-export default new PaginationView();

@@ -1,4 +1,4 @@
-import View from './view'
+import View from "./view";
 
 export default class ProductDetailView extends View {
   renderSpinner() {
@@ -14,7 +14,7 @@ export default class ProductDetailView extends View {
         </svg>
       </div>
       `
-    )
+    );
   }
 
   renderProduct(product) {
@@ -67,7 +67,9 @@ export default class ProductDetailView extends View {
                 </svg>
 
                 <label for="description"><strong>Description:</strong> </label>
-                <span class="product__description">${product.description} </span>
+                <span class="product__description">${
+                  product.description
+                } </span>
               </li>
               <li class="product__description">
                 <svg
@@ -131,6 +133,6 @@ export default class ProductDetailView extends View {
 
     `;
 
-    this.render(markup)
+    this.render(markup);
   }
 }
