@@ -14,16 +14,16 @@ export default class ProductsCtrl {
     this.loadOnSearch();
     this.paginationView.init();
     this.loadPagination();
-    this.loadCategoriesOnPageChange(products);
+    this.loadProductsOnPageChange();
   }
 
-  loadCategoriesOnPageChange() {
+  loadProductsOnPageChange() {
+    this.productsModel.pagination.page = 1;
+
     this.paginationView.addHandlerClick((page) => {
       this.productsModel.pagination.page = page;
       this.loadProducts();
-
-      // this.paginationView.init();
-      // this.loadPagination();
+      // this.loadOnSearch();
     });
   }
 
@@ -46,7 +46,7 @@ export default class ProductsCtrl {
 
       this.paginationView.init();
       this.loadPagination();
-      this.loadCategoriesOnPageChange(products);
+      this.loadProductsOnPageChange();
     });
   }
 }

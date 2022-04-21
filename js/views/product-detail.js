@@ -17,6 +17,32 @@ export default class ProductDetailView extends View {
     );
   }
 
+  ///////////////////////////////////////
+  renderSmallImages(elem) {
+    console.log(elem.toString(), "from markup images");
+    return `
+    <img
+      src="${elem.src}"
+      alt="imagenes of product"
+      class="product__img"
+    />
+   
+`;
+  }
+
+  loadImagesDetailProduct() {
+    document.querySelectorAll(".img-small").forEach((elem) => {
+      elem.addEventListener("click", () => {
+        const root = document.querySelector(".product_fig_detail");
+
+        const markup = this.renderSmallImages(elem);
+        root.innerHTML = "";
+
+        root.insertAdjacentHTML("afterbegin", markup);
+      });
+    });
+  }
+  ////////////////////////////////////////////////
   renderProduct(product) {
     const images = product.images;
 
