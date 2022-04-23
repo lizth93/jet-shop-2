@@ -2,7 +2,6 @@
   "name": "productsjson",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "parcel --no-cache index.html",
     "build": "parcel build index.html"
