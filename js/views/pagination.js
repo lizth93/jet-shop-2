@@ -16,7 +16,6 @@ export default class PaginationView extends View {
       if (!btn) return;
       const getNumberPage = +btn.dataset.goto;
 
-      console.log("the number", getNumberPage);
       onPageClick(getNumberPage);
     };
 
@@ -130,6 +129,9 @@ export default class PaginationView extends View {
   }
 
   renderPagination(curPage, numPages) {
+    console.log("renderPagination", { curPage, numPages });
+    this.render("");
+
     // page 1 with another pages
     if (curPage === 1 && numPages > 1) {
       this.renderRightButton(curPage);

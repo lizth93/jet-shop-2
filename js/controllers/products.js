@@ -1,6 +1,10 @@
 import { CATEGORIES } from "./products-constants";
 
 export default class ProductsCtrl {
+  prevLoadCriteria = "";
+  searchTerm = "";
+  showingCategoryResults = true;
+
   constructor(productsView, productsModel, paginationView) {
     this.productsView = productsView;
     this.productsModel = productsModel;
@@ -8,22 +12,29 @@ export default class ProductsCtrl {
   }
 
   async loadProducts() {
+    this.showingCategoryResults = true;
+    this.resetPageByCategoryChange();
     this.productsView.renderSpinner();
     const products = await this.productsModel.loadProducts(this.getCategory());
-    this.productsView.renderProducts(products);
-    this.loadOnSearch();
-    this.paginationView.init();
-    this.loadPagination();
-    this.loadProductsOnPageChange();
+    this.renderProductsAndPagination(products);
+    this.loadOnSearchBysubmit();
+  }
+
+  resetPageByCategoryChange() {
+    if (this.prevLoadCriteria !== this.getCategory()) {
+      this.productsModel.pagination.page = 1;
+      this.prevLoadCriteria = this.getCategory();
+    }
   }
 
   loadProductsOnPageChange() {
-    this.productsModel.pagination.page = 1;
-
     this.paginationView.addHandlerClick((page) => {
       this.productsModel.pagination.page = page;
-      this.loadProducts();
-      // this.loadOnSearch();
+      if (this.showingCategoryResults) {
+        this.loadProducts();
+      } else {
+        this.loadSearch(this.searchTerm);
+      }
     });
   }
 
@@ -38,15 +49,32 @@ export default class ProductsCtrl {
     return window.location.hash.slice(1) || CATEGORIES.All;
   }
 
-  loadOnSearch() {
-    this.productsView.onSearch(async (searchTerm) => {
-      this.productsView.renderSpinner();
-      const products = await this.productsModel.getBySearchTerm(searchTerm);
-      this.productsView.renderProducts(products);
+  async loadSearch(searchTerm) {
+    this.resetPageBySearchChange(searchTerm);
+    this.productsView.renderSpinner();
+    const products = await this.productsModel.getBySearchTerm(searchTerm);
+    this.renderProductsAndPagination(products);
+  }
 
-      this.paginationView.init();
-      this.loadPagination();
-      this.loadProductsOnPageChange();
+  loadOnSearchBysubmit() {
+    this.productsView.onSearch(async (searchTerm) => {
+      this.searchTerm = searchTerm;
+      this.showingCategoryResults = false;
+      this.loadSearch(this.searchTerm);
     });
+  }
+
+  resetPageBySearchChange(searchTerm) {
+    if (this.prevLoadCriteria !== searchTerm) {
+      this.productsModel.pagination.page = 1;
+      this.prevLoadCriteria = searchTerm;
+    }
+  }
+
+  renderProductsAndPagination(products) {
+    this.productsView.renderProducts(products);
+    this.paginationView.init();
+    this.loadPagination();
+    this.loadProductsOnPageChange();
   }
 }
