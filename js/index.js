@@ -17,6 +17,7 @@ export default class AppStartup {
       ),
       new ProductDetailCtrl(new ProductDetailView(), new ProductDetailModel()),
       new PaginationView(new ProductsModel())
+      // new ProductDetailView(new PaginationView()) ///new
     );
   }
 

@@ -1,6 +1,10 @@
 import View from "./view";
 
 export default class ProductDetailView extends View {
+  // constructor(PaginationView) {
+  //   this.PaginationView = PaginationView;
+  // }
+
   renderSpinner() {
     this.render(
       `
@@ -33,7 +37,6 @@ export default class ProductDetailView extends View {
   loadImagesDetailProduct() {
     document.querySelectorAll(".img-small").forEach((elem) => {
       elem.addEventListener("click", () => {
-        root.innerHTML = "";
         const root = document.querySelector(".product_fig_detail");
 
         const markup = this.renderSmallImages(elem);
@@ -43,9 +46,9 @@ export default class ProductDetailView extends View {
       });
     });
   }
-  ////////////////////////////////////////////////
+
   renderProduct(product) {
-    document.querySelector(".control-pagination").innerHTML = "";
+    // this.PaginationView.bind(this).removeMarkupPagination(); ////////////////////////////////////////////////newww
 
     const images = product.images;
 

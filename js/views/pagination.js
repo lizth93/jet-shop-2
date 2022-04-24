@@ -7,6 +7,11 @@ export default class PaginationView extends View {
     this.root = document.querySelector(".control-pagination");
   }
 
+  // removeMarkupPagination() {
+  //   ////newww
+  //   document.querySelector(".control-pagination").innerHTML = "";
+  // }
+
   addHandlerClick(onPageClick) {
     this.root.removeEventListener("click", this.pagBtnClickListener);
 
