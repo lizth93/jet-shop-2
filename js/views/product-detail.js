@@ -48,6 +48,7 @@ export default class ProductDetailView extends View {
   }
 
   renderProduct(product) {
+    document.querySelector(".control-pagination").innerHTML = "";
     // this.PaginationView.bind(this).removeMarkupPagination(); ////////////////////////////////////////////////newww
 
     const images = product.images;
