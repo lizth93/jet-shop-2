@@ -43,7 +43,7 @@ export default class ProductsModel {
     );
     this.pagination.total = data.total;
     this.calculatePages();
-    console.log(this.pagination.total, "from search total pagination");
+
     return data.products.map((x) => {
       return {
         id: x.id,
@@ -63,8 +63,6 @@ export default class ProductsModel {
       this.pagination.page === 1
         ? 0
         : this.pagination.page * this.pagination.limit - this.pagination.limit;
-
-    console.log(this.pagination.page);
 
     if (this.pagination.total < skip) {
       skip = this.pagination.total;

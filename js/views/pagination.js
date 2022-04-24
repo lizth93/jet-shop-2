@@ -129,7 +129,6 @@ export default class PaginationView extends View {
   }
 
   renderPagination(curPage, numPages) {
-    console.log("renderPagination", { curPage, numPages });
     this.render("");
 
     // page 1 with another pages
